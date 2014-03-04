@@ -27,6 +27,8 @@ SLIne.kkk
 FreqScope.new;
 
 FreqScope.new;
+FreqScope.new;
+
 
 (
   SynthDef ( "dreyblattcord", { arg freq = 440;
