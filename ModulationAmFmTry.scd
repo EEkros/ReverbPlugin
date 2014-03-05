@@ -72,11 +72,11 @@ var freq;
 // there are special Low Frequency Oscillators (LFOs)
 
 // LFSaw
-{ SinOsc.ar(LFSaw.kr(4, 0, 200, 400), 0, 0.7) }.play
+{ SinOsc.ar(LFSaw.kr(0.25, 0, 350, 700),  0, 0.9 ) }.play
 
 // LFTri
-{ SinOsc.ar(LFTri.kr(4, 0, 200, 400), 0, 0.7) }.play
-{ Saw.ar(LFTri.kr(4, 0, 200, 400), 0.7) }.play
+{ SinOsc.ar ( LFTri.kr ( 4,    0, 200, 400 ), 0, 0.7 ) }.play
+{ Saw.ar    ( LFTri.kr ( 0.25, 0, 200, 50 ),    0.7 ) }.play
 
 // LFPar
 { SinOsc.ar(LFPar.kr(0.2, 0, 400,800),0, 0.7) }.play
