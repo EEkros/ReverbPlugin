@@ -57,3 +57,14 @@ Window.new
 )
 
 
+// let's make a Theremin:
+
+(
+{
+var freq;
+	freq = MouseY.kr(4000, 200, 'exponential', 0.8);
+	SinOsc.ar(freq+(freq*SinOsc.ar(7,0,0.02)), 0, MouseX.kr(0, 0.9)
+	)!2
+}.play
+)
+
