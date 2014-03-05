@@ -29,14 +29,16 @@ FreqScope.new;
 FreqScope.new;
 FreqScope.new;
 
-
+Decay
+LFNoise0
 (
   SynthDef ( "dreyblattcord", { arg freq = 440;
-	var osc, son;
-
-	osc = Saw.ar ( freq ); // 800 Hz sine oscillator
+	var osc, son, modulator;
+    modulator = SinOsc.ar ( MouseX.kr ( 2, 2000, 1 ), mul:0.5, add:1);
+    osc = Saw.ar ( freq, 0.7, modulator ); // 800 Hz sine oscillator
 	// Reverb1.ar ( osc );
-	son = DelayN.ar ( osc, 0.2,0.1 );
+	son = DelayN.ar ( osc, 0.2 ,0.1 );
+	// son = son + Decay.ar ( son, 0.550 );
     osc = osc + son;
 	Out.ar ( 0, osc ); // send output to audio bus zero.
 }).add;
@@ -47,5 +49,14 @@ FreqScope.new;
 	x.set("freq", 660);
 	x.set("freq", 880, "out", 1);
 	x.free;
+
+
+
+plot({ Decay.ar(Impulse.ar(1), 0.01) });
+
+plot({ Decay.ar(Impulse.ar(1), 0.2 ) });
+
+// used as an envelope
+play({ Decay.ar(Impulse.ar(XLine.kr(1,50,20), 0.25), 0.2, PinkNoise.ar, 0) });
 
 
